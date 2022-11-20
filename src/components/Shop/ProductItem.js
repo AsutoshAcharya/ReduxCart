@@ -9,7 +9,7 @@ const ProductItem = ({ title, price, description, id }) => {
   //   return state;
   // });
   const addTOCartHandler = () => {
-    dispatch(cartActions.addItemToCart({ id, title, price })); 
+    dispatch(cartActions.addItemToCart({ id, title, price }));
     // modern javaScript shortcut where keyname and value hold same name i.e.id:id
   };
   return (
@@ -17,7 +17,7 @@ const ProductItem = ({ title, price, description, id }) => {
       <Card>
         <header>
           <h3>{title}</h3>
-          <div className={classes.price}>${price.toFixed(2)}</div>
+          <div className={classes.price}>Rs {price.toFixed(2)}</div>
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
