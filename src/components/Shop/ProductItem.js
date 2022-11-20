@@ -1,7 +1,17 @@
-import Card from '../UI/Card';
-import classes from './ProductItem.module.css';
-
-const ProductItem = ({ title, price, description }) => {
+import Card from "../UI/Card";
+import classes from "./ProductItem.module.css";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart-slice";
+// import { useSelector } from "react-redux";
+const ProductItem = ({ title, price, description, id }) => {
+  const dispatch = useDispatch();
+  // const cart = useSelector((state) => {
+  //   return state;
+  // });
+  const addTOCartHandler = () => {
+    dispatch(cartActions.addItemToCart({ id, title, price })); 
+    // modern javaScript shortcut where keyname and value hold same name i.e.id:id
+  };
   return (
     <li className={classes.item}>
       <Card>
@@ -11,7 +21,7 @@ const ProductItem = ({ title, price, description }) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-          <button>Add to Cart</button>
+          <button onClick={addTOCartHandler}>Add to Cart</button>
         </div>
       </Card>
     </li>
